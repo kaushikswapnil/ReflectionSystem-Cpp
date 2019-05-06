@@ -12,21 +12,48 @@
     <Filter Include="Source Files\Core">
       <UniqueIdentifier>{7d07084f-a427-4d25-9176-150a78a2fd03}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Core\TypeDescriptors">
+      <UniqueIdentifier>{9764ac11-84ba-405a-986a-d081025ff0e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\TypeResolver">
+      <UniqueIdentifier>{fc643c0c-81a3-488d-b4e2-f0de4679f0d3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ReflectionSystem-Cpp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TypeDescriptor_Struct.cpp">
+      <Filter>Source Files\Core\TypeDescriptors</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeDescriptor_STDVector.cpp">
+      <Filter>Source Files\Core\TypeDescriptors</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeResolver.cpp">
+      <Filter>Source Files\Core\TypeResolver</Filter>
+    </ClCompile>
+    <ClCompile Include="PrimitiveTypeDescriptors.cpp">
+      <Filter>Source Files\Core\TypeDescriptors</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TypeDescriptor.h">
-      <Filter>Source Files\Core</Filter>
-    </ClInclude>
     <ClInclude Include="Reflect.h">
       <Filter>Source Files\Core</Filter>
     </ClInclude>
+    <ClInclude Include="PrimitiveTypeDescriptors.h">
+      <Filter>Source Files\Core\TypeDescriptors</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeDescriptor.h">
+      <Filter>Source Files\Core\TypeDescriptors</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeDescriptor_Struct.h">
+      <Filter>Source Files\Core\TypeDescriptors</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeDescriptor_STDVector.h">
+      <Filter>Source Files\Core\TypeDescriptors</Filter>
+    </ClInclude>
     <ClInclude Include="TypeResolver.h">
-      <Filter>Source Files\Core</Filter>
+      <Filter>Source Files\Core\TypeResolver</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

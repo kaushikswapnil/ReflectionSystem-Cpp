@@ -2,10 +2,32 @@
 //
 
 #include <iostream>
+#include "Reflect.h"
+
+struct Node
+{
+	std::string key;
+	double value;
+	std::vector<Node> children;
+
+	REFLECT() // Enable reflection
+};
+
+REFLECT_STRUCT_BEGIN(Node)
+REFLECT_STRUCT_MEMBER(key)
+REFLECT_STRUCT_MEMBER(value)
+REFLECT_STRUCT_MEMBER(children)
+REFLECT_STRUCT_END()
 
 int main()
 {
-    std::cout << "Hello World!\n"; 
+	Node node = { "apple", 3, {{"banana", 7, {}}, {"cherry", 11, {}}} };
+
+	TypeDescriptor* nodeTypeDesc = TypeResolver<Node>::GetTypeDescriptor();
+
+	nodeTypeDesc->Dump(&node);
+
+	return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

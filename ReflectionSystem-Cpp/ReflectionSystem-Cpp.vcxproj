@@ -91,6 +91,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,11 +152,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="PrimitiveTypeDescriptors.cpp" />
     <ClCompile Include="ReflectionSystem-Cpp.cpp" />
+    <ClCompile Include="TypeDescriptor_STDVector.cpp" />
+    <ClCompile Include="TypeDescriptor_Struct.cpp" />
+    <ClCompile Include="TypeResolver.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="PrimitiveTypeDescriptors.h" />
     <ClInclude Include="Reflect.h" />
     <ClInclude Include="TypeDescriptor.h" />
+    <ClInclude Include="TypeDescriptor_STDVector.h" />
+    <ClInclude Include="TypeDescriptor_Struct.h" />
     <ClInclude Include="TypeResolver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

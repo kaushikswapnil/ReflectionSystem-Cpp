@@ -1,4 +1,7 @@
 #pragma once
+#include "TypeResolver.h"
+#include "TypeDescriptor_Struct.h"
+#include <cstddef>
 
 #define REFLECT() \
 	friend struct DefaultResolver; \
@@ -7,9 +10,9 @@
 
 #define REFLECT_STRUCT_BEGIN(_Type) \
 	TypeDescriptor_Struct _Type::Reflection{_Type::InitReflection}; \
-	void _Type::InitReflection(TypeDescriptor_Struct* typeDesc) \ 
+	void _Type::InitReflection(TypeDescriptor_Struct* typeDesc) \
 	{ \
-		using type = _Type;
+		using type = _Type; \
 		typeDesc->m_Name = #_Type; \
 		typeDesc->m_Size = sizeof(_Type); \
 		typeDesc->m_Members = \
