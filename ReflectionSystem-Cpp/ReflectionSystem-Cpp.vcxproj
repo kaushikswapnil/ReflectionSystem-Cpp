@@ -153,18 +153,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="PrimitiveTypeDescriptors.cpp" />
+    <ClCompile Include="PrimitiveTypeResolver.cpp" />
     <ClCompile Include="ReflectionSystem-Cpp.cpp" />
-    <ClCompile Include="TypeDescriptor_STDVector.cpp" />
-    <ClCompile Include="TypeDescriptor_Struct.cpp" />
+    <ClCompile Include="STLVectorDescriptor.cpp" />
+    <ClCompile Include="StructDescriptor.cpp" />
     <ClCompile Include="TypeResolver.cpp" />
+    <ClCompile Include="TypeResolverHelper.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ExoticPrimitiveTypeResolver.h" />
     <ClInclude Include="PrimitiveTypeDescriptors.h" />
+    <ClInclude Include="PrimitiveTypeResolver.h" />
     <ClInclude Include="Reflect.h" />
+    <ClInclude Include="STLContainerDescriptor.h" />
+    <ClInclude Include="STLVectorDescriptor.h" />
+    <ClInclude Include="StructDescriptor.h" />
+    <ClInclude Include="SystemMacros.h" />
     <ClInclude Include="TypeDescriptor.h" />
-    <ClInclude Include="TypeDescriptor_STDVector.h" />
-    <ClInclude Include="TypeDescriptor_Struct.h" />
     <ClInclude Include="TypeResolver.h" />
+    <ClInclude Include="TypeResolverHelper.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

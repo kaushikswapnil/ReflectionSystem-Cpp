@@ -2,23 +2,46 @@
 #include "TypeDescriptor.h"
 #include <iostream>
 
-struct TypeDescriptor_Int : public TypeDescriptor
+BEGIN_NAMESPACE
+
+class IntDescriptor : public TypeDescriptor
 {
-	TypeDescriptor_Int() : TypeDescriptor("int", sizeof(int)) {}
+public:
+	IntDescriptor() : TypeDescriptor("int", sizeof(int)) {}
 
 	virtual void Dump(const void* obj, const size_t indentLevel) const override;
 };
 
-struct TypeDescriptor_Double : public TypeDescriptor
+class DoubleDescriptor : public TypeDescriptor
 {
-	TypeDescriptor_Double() : TypeDescriptor("double", sizeof(double)) {}
+public:
+	DoubleDescriptor() : TypeDescriptor("double", sizeof(double)) {}
 
 	virtual void Dump(const void* obj, const size_t indentLevel) const override;
 };
 
-struct TypeDescriptor_STDString : public TypeDescriptor
+class FloatDescriptor : public TypeDescriptor
 {
-	TypeDescriptor_STDString() : TypeDescriptor("std::string", sizeof(std::string)) {}
+public:
+	FloatDescriptor() : TypeDescriptor("float", sizeof(float)) {}
 
 	virtual void Dump(const void* obj, const size_t indentLevel) const override;
 };
+
+class CharDescriptor : public TypeDescriptor
+{
+public:
+	CharDescriptor() : TypeDescriptor("char", sizeof(char)) {}
+
+	virtual void Dump(const void* obj, const size_t indentLevel) const override;
+};
+
+class STDStringDescriptor : public TypeDescriptor
+{
+public:
+	STDStringDescriptor() : TypeDescriptor("std::string", sizeof(std::string)) {}
+
+	virtual void Dump(const void* obj, const size_t indentLevel) const override;
+};
+
+END_NAMESPACE

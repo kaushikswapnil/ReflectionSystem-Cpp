@@ -1,29 +1,9 @@
 #include "TypeResolver.h"
 
-template<>
-TypeDescriptor* DefaultResolver::GetPrimitiveTypeDescriptor<int>()
-{
-	static TypeDescriptor_Int intTypeDescriptor;
-	return &intTypeDescriptor;
-}
+USING_NAMESPACE
 
-template<>
-TypeDescriptor* DefaultResolver::GetPrimitiveTypeDescriptor<double>()
+PrimitiveTypeResolver& DefaultResolver::GetPrimitiveTypeResolver()
 {
-	static TypeDescriptor_Double doubleTypeDescriptor;
-	return &doubleTypeDescriptor;
+	static PrimitiveTypeResolver primitiveTypeResolver;
+	return primitiveTypeResolver;
 }
-
-template<>
-TypeDescriptor* DefaultResolver::GetPrimitiveTypeDescriptor<std::string>()
-{
-	static TypeDescriptor_STDString stringTypeDescriptor;
-	return &stringTypeDescriptor;
-}
-
-template<>
-TypeDescriptor* DefaultResolver::GetPrimitiveTypeDescriptor<int>();
-template<>
-TypeDescriptor* DefaultResolver::GetPrimitiveTypeDescriptor<double>();
-template<>
-TypeDescriptor* DefaultResolver::GetPrimitiveTypeDescriptor<std::string>();

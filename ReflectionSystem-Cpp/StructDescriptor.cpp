@@ -1,7 +1,9 @@
-#include "TypeDescriptor_Struct.h"
+#include "StructDescriptor.h"
 #include <iostream>
 
-void TypeDescriptor_Struct::Dump(const void* obj, const size_t indentLevel) const
+USING_NAMESPACE
+
+void StructDescriptor::Dump(const void* obj, const size_t indentLevel) const
 {
 	std::cout << m_Name << " {";
 	for (const Member& member : m_Members)

@@ -18,42 +18,72 @@
     <Filter Include="Source Files\Core\TypeResolver">
       <UniqueIdentifier>{fc643c0c-81a3-488d-b4e2-f0de4679f0d3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Core\TypeDescriptors\TypeDescriptorImplementations">
+      <UniqueIdentifier>{49c17975-77fd-4a3d-b4db-5de911b11930}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\TypeResolver\Utils">
+      <UniqueIdentifier>{0a2f54a7-c86a-4bd5-a0f0-7a7be57a8be6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\TypeDescriptors\TypeDescriptorImplementations\STLContainerDescriptors">
+      <UniqueIdentifier>{aa07cd37-aca6-4f73-92f4-0f6b21f7800d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ReflectionSystem-Cpp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TypeDescriptor_Struct.cpp">
-      <Filter>Source Files\Core\TypeDescriptors</Filter>
-    </ClCompile>
-    <ClCompile Include="TypeDescriptor_STDVector.cpp">
-      <Filter>Source Files\Core\TypeDescriptors</Filter>
-    </ClCompile>
     <ClCompile Include="TypeResolver.cpp">
       <Filter>Source Files\Core\TypeResolver</Filter>
     </ClCompile>
     <ClCompile Include="PrimitiveTypeDescriptors.cpp">
-      <Filter>Source Files\Core\TypeDescriptors</Filter>
+      <Filter>Source Files\Core\TypeDescriptors\TypeDescriptorImplementations</Filter>
+    </ClCompile>
+    <ClCompile Include="PrimitiveTypeResolver.cpp">
+      <Filter>Source Files\Core\TypeResolver</Filter>
+    </ClCompile>
+    <ClCompile Include="TypeResolverHelper.cpp">
+      <Filter>Source Files\Core\TypeResolver\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="STLVectorDescriptor.cpp">
+      <Filter>Source Files\Core\TypeDescriptors\TypeDescriptorImplementations\STLContainerDescriptors</Filter>
+    </ClCompile>
+    <ClCompile Include="StructDescriptor.cpp">
+      <Filter>Source Files\Core\TypeDescriptors\TypeDescriptorImplementations</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Reflect.h">
       <Filter>Source Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="PrimitiveTypeDescriptors.h">
-      <Filter>Source Files\Core\TypeDescriptors</Filter>
-    </ClInclude>
     <ClInclude Include="TypeDescriptor.h">
-      <Filter>Source Files\Core\TypeDescriptors</Filter>
-    </ClInclude>
-    <ClInclude Include="TypeDescriptor_Struct.h">
-      <Filter>Source Files\Core\TypeDescriptors</Filter>
-    </ClInclude>
-    <ClInclude Include="TypeDescriptor_STDVector.h">
       <Filter>Source Files\Core\TypeDescriptors</Filter>
     </ClInclude>
     <ClInclude Include="TypeResolver.h">
       <Filter>Source Files\Core\TypeResolver</Filter>
+    </ClInclude>
+    <ClInclude Include="PrimitiveTypeDescriptors.h">
+      <Filter>Source Files\Core\TypeDescriptors\TypeDescriptorImplementations</Filter>
+    </ClInclude>
+    <ClInclude Include="PrimitiveTypeResolver.h">
+      <Filter>Source Files\Core\TypeResolver</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemMacros.h">
+      <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="STLContainerDescriptor.h">
+      <Filter>Source Files\Core\TypeDescriptors\TypeDescriptorImplementations\STLContainerDescriptors</Filter>
+    </ClInclude>
+    <ClInclude Include="STLVectorDescriptor.h">
+      <Filter>Source Files\Core\TypeDescriptors\TypeDescriptorImplementations\STLContainerDescriptors</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeResolverHelper.h">
+      <Filter>Source Files\Core\TypeResolver\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ExoticPrimitiveTypeResolver.h">
+      <Filter>Source Files\Core\TypeResolver</Filter>
+    </ClInclude>
+    <ClInclude Include="StructDescriptor.h">
+      <Filter>Source Files\Core\TypeDescriptors\TypeDescriptorImplementations</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
