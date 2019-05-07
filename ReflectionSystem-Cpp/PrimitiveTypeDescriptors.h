@@ -1,13 +1,12 @@
 #pragma once
 #include "TypeDescriptor.h"
-#include <iostream>
 
 BEGIN_NAMESPACE
 
 class IntDescriptor : public TypeDescriptor
 {
 public:
-	IntDescriptor() : TypeDescriptor("int", sizeof(int)) {}
+	IntDescriptor() : TypeDescriptor((int*)nullptr) {}
 
 	virtual void Dump(const void* obj, const size_t indentLevel) const override;
 };
@@ -15,7 +14,7 @@ public:
 class DoubleDescriptor : public TypeDescriptor
 {
 public:
-	DoubleDescriptor() : TypeDescriptor("double", sizeof(double)) {}
+	DoubleDescriptor() : TypeDescriptor((double*)nullptr) {}
 
 	virtual void Dump(const void* obj, const size_t indentLevel) const override;
 };
@@ -23,7 +22,7 @@ public:
 class FloatDescriptor : public TypeDescriptor
 {
 public:
-	FloatDescriptor() : TypeDescriptor("float", sizeof(float)) {}
+	FloatDescriptor() : TypeDescriptor((float*)nullptr) {}
 
 	virtual void Dump(const void* obj, const size_t indentLevel) const override;
 };
@@ -31,7 +30,7 @@ public:
 class CharDescriptor : public TypeDescriptor
 {
 public:
-	CharDescriptor() : TypeDescriptor("char", sizeof(char)) {}
+	CharDescriptor() : TypeDescriptor((char*)nullptr) {}
 
 	virtual void Dump(const void* obj, const size_t indentLevel) const override;
 };
@@ -39,7 +38,7 @@ public:
 class STDStringDescriptor : public TypeDescriptor
 {
 public:
-	STDStringDescriptor() : TypeDescriptor("std::string", sizeof(std::string)) {}
+	STDStringDescriptor() : TypeDescriptor((std::string*)nullptr) {}
 
 	virtual void Dump(const void* obj, const size_t indentLevel) const override;
 };

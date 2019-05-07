@@ -14,8 +14,8 @@
 	void _Type::InitReflection(SCOPE_NAMESPACE::StructDescriptor* typeDesc) \
 	{ \
 		using type = _Type; \
-		typeDesc->m_Name = #_Type; \
-		typeDesc->m_Size = sizeof(_Type); \
+		typeDesc->SetTypeName(#_Type); \
+		typeDesc->SetSize(sizeof(_Type)); \
 		typeDesc->m_Members = \
 		{
 

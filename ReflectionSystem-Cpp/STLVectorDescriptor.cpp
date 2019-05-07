@@ -3,11 +3,6 @@
 
 USING_NAMESPACE
 
-std::string STLVectorDescriptor::GetTypeName() const
-{
-	return std::string("std::vector<") + m_ItemTypeDesc->GetTypeName() + ">";
-}
-
 void STLVectorDescriptor::Dump(const void* obj, const size_t indentLevel) const
 {
 	const size_t numItems = GetSize(obj);

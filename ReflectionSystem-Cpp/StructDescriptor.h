@@ -19,7 +19,7 @@ public:
 	std::vector<Member> m_Members;
 
 public:
-	StructDescriptor(void(*init)(StructDescriptor*)) : TypeDescriptor(nullptr, 0)
+	StructDescriptor(void(*init)(StructDescriptor*)) : TypeDescriptor("#TODO", 0)
 	{
 		init(this);
 	}

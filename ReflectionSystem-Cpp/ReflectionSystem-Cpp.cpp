@@ -2,13 +2,14 @@
 //
 
 #include <iostream>
+#include <typeinfo>
 #include "Reflect.h"
 
 struct Node
 {
 	int key;
 	double value;
-	std::vector<char> children;
+	std::vector<int> children;
 
 	REFLECT() // Enable reflection
 };
@@ -19,15 +20,29 @@ REFLECT_STRUCT_MEMBER(value)
 REFLECT_STRUCT_MEMBER(children)
 REFLECT_STRUCT_END()
 
+template<typename R, typename...Args >
+auto print_default_result(R(*)(Args...)) -> void {
+	std::cout << R{} << '\n';
+}
+
+int functionTest(int x, int y)
+{
+	return x+y;
+}
+
 int main()
 {
 	using namespace ReflectionSystem;
 
-	Node node = { 1, 3, {'a', 'b', 'c'}};
+	Node node = { 1, 3, {5, 6, 7}};
 
 	TypeDescriptor* nodeTypeDesc = TypeResolver<Node>::GetTypeDescriptor();
 
 	nodeTypeDesc->Dump(&node);
+
+
+	std::cout <<std::endl;
+	print_default_result(functionTest);
 
 	return 0;
 }

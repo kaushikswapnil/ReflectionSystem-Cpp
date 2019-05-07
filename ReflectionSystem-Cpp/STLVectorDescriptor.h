@@ -2,6 +2,7 @@
  
 #include "STLContainerDescriptor.h"
 #include <vector>
+#include <memory>
 #include "TypeResolver.h"
 
 BEGIN_NAMESPACE
@@ -13,23 +14,23 @@ class STLVectorDescriptor : public STLContainerDescriptor
 	const void* (*GetItem)(const void*, size_t);
 
 public:
-	template<typename ItemType>
-	STLVectorDescriptor(ItemType*) : STLContainerDescriptor("std::vector<>", sizeof(std::vector<ItemType>)), m_ItemTypeDesc(TypeResolver<ItemType>::GetTypeDescriptor())
-	{
+	template<typename ItemType, typename Alloc = std::allocator<ItemType>>  
+	STLVectorDescriptor(ItemType*) : STLContainerDescriptor((std::vector<ItemType, Alloc>*)nullptr), m_ItemTypeDesc(TypeResolver<ItemType>::GetTypeDescriptor())
+	{	
+		using VectorType = std::vector<ItemType, Alloc>;
+
 		GetSize = [](const void* voidVectorPtr) -> size_t
 		{
-			const auto& vec = *(static_cast<const std::vector<ItemType>*>(voidVectorPtr));
+			const auto& vec = *(static_cast<const VectorType*>(voidVectorPtr));
 			return vec.size();
 		};
 
 		GetItem = [](const void* voidVecPtr, size_t index) -> const void*
 		{
-			const auto& vec = *(static_cast<const std::vector<ItemType>*>(voidVecPtr));
+			const auto& vec = *(static_cast<const VectorType*>(voidVecPtr));
 			return &vec[index];
 		};
 	}
-
-	virtual std::string GetTypeName() const override;
 
 	virtual void Dump(const void* obj, const size_t indentLevel) const override;
 };

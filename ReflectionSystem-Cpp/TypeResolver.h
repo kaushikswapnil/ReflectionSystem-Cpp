@@ -6,6 +6,8 @@
 
 BEGIN_NAMESPACE
 
+//#TODO USE MACROS TO ALLOW STORAGE OF THE TYPEDEF IN DEFAULT RESOLVER
+
 class TypeDescriptor;
 
 class DefaultResolver

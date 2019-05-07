@@ -27,6 +27,9 @@
     <Filter Include="Source Files\Core\TypeDescriptors\TypeDescriptorImplementations\STLContainerDescriptors">
       <UniqueIdentifier>{aa07cd37-aca6-4f73-92f4-0f6b21f7800d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Core\TypeDescriptors\Base">
+      <UniqueIdentifier>{9717c2cd-fdf1-4cbe-ae1e-33bf48aed01f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ReflectionSystem-Cpp.cpp">

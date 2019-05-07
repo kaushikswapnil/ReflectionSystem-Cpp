@@ -5,7 +5,7 @@ USING_NAMESPACE
 
 void StructDescriptor::Dump(const void* obj, const size_t indentLevel) const
 {
-	std::cout << m_Name << " {";
+	std::cout << m_TypeName << " {";
 	for (const Member& member : m_Members)
 	{
 		std::cout << std::endl;
