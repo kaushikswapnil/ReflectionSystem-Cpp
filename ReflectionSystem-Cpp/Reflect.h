@@ -1,27 +1,23 @@
 #pragma once
 #include "TypeResolver.h"
-#include <cstddef>
 #include "SystemMacros.h"
-#include "StructDescriptor.h"
+#include "ClassDescriptor.h"
+#include <stddef.h>
 
 #define REFLECT() \
 	friend class SCOPE_NAMESPACE::DefaultResolver; \
-	static SCOPE_NAMESPACE::StructDescriptor Reflection; \
-	static void InitReflection(SCOPE_NAMESPACE::StructDescriptor*);
+	static SCOPE_NAMESPACE::ClassDescriptor Reflection; \
+	static void InitReflection(SCOPE_NAMESPACE::ClassDescriptor*);
 
 #define REFLECT_STRUCT_BEGIN(_Type) \
-	SCOPE_NAMESPACE::StructDescriptor _Type::Reflection{_Type::InitReflection}; \
-	void _Type::InitReflection(SCOPE_NAMESPACE::StructDescriptor* typeDesc) \
+	SCOPE_NAMESPACE::ClassDescriptor _Type::Reflection{_Type::InitReflection}; \
+	void _Type::InitReflection(SCOPE_NAMESPACE::ClassDescriptor* typeDesc) \
 	{ \
 		using type = _Type; \
-		typeDesc->SetTypeName(#_Type); \
-		typeDesc->SetSize(sizeof(_Type)); \
-		typeDesc->m_Members = \
-		{
+		typeDesc->SetTypeName(typeid(type).name()); \
+		typeDesc->SetSize(sizeof(type)); \
 
-#define REFLECT_STRUCT_MEMBER(_Name) \
-			{#_Name, offsetof(type, _Name), SCOPE_NAMESPACE::TypeResolver<decltype(type::_Name)>::GetTypeDescriptor()},
+#define REFLECT_STRUCT_MEMBER(_Name) typeDesc->m_Members.push_back(SCOPE_NAMESPACE::Field(#_Name, &type::_Name, offsetof(type, _Name)));
 
 #define REFLECT_STRUCT_END() \
-		}; \
-	} 
+	}

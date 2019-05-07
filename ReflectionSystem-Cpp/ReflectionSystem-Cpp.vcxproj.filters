@@ -50,7 +50,10 @@
     <ClCompile Include="STLVectorDescriptor.cpp">
       <Filter>Source Files\Core\TypeDescriptors\TypeDescriptorImplementations\STLContainerDescriptors</Filter>
     </ClCompile>
-    <ClCompile Include="StructDescriptor.cpp">
+    <ClCompile Include="Field.cpp">
+      <Filter>Source Files\Core\TypeDescriptors\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="ClassDescriptor.cpp">
       <Filter>Source Files\Core\TypeDescriptors\TypeDescriptorImplementations</Filter>
     </ClCompile>
   </ItemGroup>
@@ -85,7 +88,10 @@
     <ClInclude Include="ExoticPrimitiveTypeResolver.h">
       <Filter>Source Files\Core\TypeResolver</Filter>
     </ClInclude>
-    <ClInclude Include="StructDescriptor.h">
+    <ClInclude Include="Field.h">
+      <Filter>Source Files\Core\TypeDescriptors\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="ClassDescriptor.h">
       <Filter>Source Files\Core\TypeDescriptors\TypeDescriptorImplementations</Filter>
     </ClInclude>
   </ItemGroup>

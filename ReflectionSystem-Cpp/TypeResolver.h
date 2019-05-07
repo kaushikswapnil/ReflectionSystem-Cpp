@@ -64,6 +64,11 @@ public:
 	{
 		return DefaultResolver::GetTypeDescriptor<T>();
 	}
+
+	static unsigned int GetTypeID()
+	{
+		return TypeResolverHelper::CalculateHashForTypeName(typeid(T).name());
+	}
 };
 
 END_NAMESPACE

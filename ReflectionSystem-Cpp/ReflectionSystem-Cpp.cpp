@@ -20,11 +20,6 @@ REFLECT_STRUCT_MEMBER(value)
 REFLECT_STRUCT_MEMBER(children)
 REFLECT_STRUCT_END()
 
-template<typename R, typename...Args >
-auto print_default_result(R(*)(Args...)) -> void {
-	std::cout << R{} << '\n';
-}
-
 int functionTest(int x, int y)
 {
 	return x+y;
@@ -39,10 +34,6 @@ int main()
 	TypeDescriptor* nodeTypeDesc = TypeResolver<Node>::GetTypeDescriptor();
 
 	nodeTypeDesc->Dump(&node);
-
-
-	std::cout <<std::endl;
-	print_default_result(functionTest);
 
 	return 0;
 }

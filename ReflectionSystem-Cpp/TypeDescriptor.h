@@ -6,6 +6,7 @@ BEGIN_NAMESPACE
 class TypeDescriptor
 {
 public:
+	TypeDescriptor() : m_TypeName(), m_Size(0) {} //Used for init style creations
 	TypeDescriptor(const char* typeName, const size_t size) : m_TypeName(typeName), m_Size(size) {}
 	TypeDescriptor(const std::string& typeName, const size_t size) : m_TypeName(typeName), m_Size(size) {}
 	template<typename ItemType>

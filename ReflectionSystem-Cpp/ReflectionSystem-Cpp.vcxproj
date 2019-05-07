@@ -152,22 +152,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Field.cpp" />
     <ClCompile Include="PrimitiveTypeDescriptors.cpp" />
     <ClCompile Include="PrimitiveTypeResolver.cpp" />
     <ClCompile Include="ReflectionSystem-Cpp.cpp" />
     <ClCompile Include="STLVectorDescriptor.cpp" />
-    <ClCompile Include="StructDescriptor.cpp" />
+    <ClCompile Include="ClassDescriptor.cpp" />
     <ClCompile Include="TypeResolver.cpp" />
     <ClCompile Include="TypeResolverHelper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ExoticPrimitiveTypeResolver.h" />
+    <ClInclude Include="Field.h" />
     <ClInclude Include="PrimitiveTypeDescriptors.h" />
     <ClInclude Include="PrimitiveTypeResolver.h" />
     <ClInclude Include="Reflect.h" />
     <ClInclude Include="STLContainerDescriptor.h" />
     <ClInclude Include="STLVectorDescriptor.h" />
-    <ClInclude Include="StructDescriptor.h" />
+    <ClInclude Include="ClassDescriptor.h" />
     <ClInclude Include="SystemMacros.h" />
     <ClInclude Include="TypeDescriptor.h" />
     <ClInclude Include="TypeResolver.h" />

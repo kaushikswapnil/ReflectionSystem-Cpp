@@ -24,6 +24,11 @@ TypeDescriptor* TypeResolverHelper::GetSTDVectorTypeDescriptor<char, std::alloca
 	return &vectorDescriptor;
 }
 
+unsigned int TypeResolverHelper::CalculateHashForTypeName(const std::string& typeName)
+{
+	return 0; //#TODO Implement the hash 
+}
+
 //template<>
 //TypeDescriptor* TypeResolverHelper::GetSTDVectorTypeDescriptor<std::string>()
 //{
