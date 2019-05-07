@@ -5,6 +5,7 @@ USING_NAMESPACE
 
 void ClassDescriptor::Dump(const void* obj, const size_t indentLevel) const
 {
+	//#TODO Change field descriptor so that we can simply call dump on the fields
 	std::cout << m_TypeName << " {";
 	for (const Field& member : m_Members)
 	{
