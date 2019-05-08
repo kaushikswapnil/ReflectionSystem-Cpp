@@ -3,16 +3,23 @@
 
 USING_NAMESPACE
 
-void ClassDescriptor::Dump(const void* obj, const size_t indentLevel) const
+void ClassDescriptor::DumpToOStream(const void* obj, std::ostream& outStream, const size_t indentLevel) const
 {
 	//#TODO Change field descriptor so that we can simply call dump on the fields
-	std::cout << m_TypeName << " {";
-	for (const Field& member : m_Members)
+	outStream << GetTypeName() << " ";
+	if (!m_Members.empty())
 	{
-		std::cout << std::endl;
-		std::cout << std::string(4 * (indentLevel + 1), ' ') << member.GetFieldName() << " = ";
-		member.Dump((char*)obj + member.GetFieldOffset(), indentLevel + 1);
+		outStream << std::endl << std::string(4 * (indentLevel), ' ') << "{" << std::endl;
+		for (const Field& member : m_Members)
+		{
+			outStream << std::string(4 * (indentLevel + 1), ' ');
+			member.DumpToOStream((char*)obj + member.GetFieldOffset(), outStream, indentLevel + 1);
+		}
+
+		outStream << std::string(4 * indentLevel, ' ') << "}" << std::endl;
 	}
-	if (!m_Members.empty()) std::cout << std::endl << std::string(4 * indentLevel, ' ');
-	std::cout << "}";
+	else
+	{
+		outStream << "{ }";
+	}
 }

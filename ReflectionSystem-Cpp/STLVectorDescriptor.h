@@ -31,7 +31,7 @@ public:
 		};
 	}
 
-	virtual void Dump(const void* obj, const size_t indentLevel) const override;
+	virtual void DumpToOStream(const void* obj, std::ostream& outStream, const size_t indentLevel = 0) const override;
 };
 
 END_NAMESPACE

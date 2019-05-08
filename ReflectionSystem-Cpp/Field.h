@@ -25,7 +25,7 @@ public:
 	const TypeDescriptor* GetFieldTypeDescriptor() const { return m_FieldTypeDescriptor; }
 	const TypeDescriptor* GetOwnerTypeDescriptor() const { return m_OwnerTypeDescriptor; }
 
-	void Dump(const void* obj, const size_t indentLevel = 0) const;
+	void DumpToOStream(const void* obj, std::ostream& outStream, const size_t indentLevel = 0) const;
 
 protected:
 	std::string m_FieldName;

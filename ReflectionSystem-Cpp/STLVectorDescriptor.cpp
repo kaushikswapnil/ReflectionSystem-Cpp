@@ -3,16 +3,23 @@
 
 USING_NAMESPACE
 
-void STLVectorDescriptor::Dump(const void* obj, const size_t indentLevel) const
+void STLVectorDescriptor::DumpToOStream(const void* obj, std::ostream& outStream, const size_t indentLevel) const
 {
 	const size_t numItems = GetContainerSize(obj);
-	std::cout << GetTypeName() << "{";
-	for (size_t iter = 0; iter < numItems; ++iter)
+	outStream << GetTypeName();
+	if (numItems > 0)
 	{
-		std::cout << std::endl;
-		std::cout << std::string(4 * (indentLevel + 1), ' ') << "[" << iter << "] ";
-		m_ItemTypeDesc->Dump(GetContainerItem(obj, iter), indentLevel + 1);
+		outStream << std::endl << std::string(4 * (indentLevel), ' ') << "{" << std::endl;
+		for (size_t iter = 0; iter < numItems; ++iter)
+		{
+			outStream << std::string(4 * (indentLevel + 1), ' ') << "[" << iter << "] ";
+			m_ItemTypeDesc->DumpToOStream(GetContainerItem(obj, iter), outStream, indentLevel + 1);
+		}
+		outStream << std::string(4* (indentLevel), ' ') << "}";
 	}
-	if (numItems != 0) std::cout << std::endl << std::string(4 * (indentLevel), ' ');
-	std::cout << "}";
+	else
+	{
+		outStream << "{ }";
+	}
+	outStream << std::endl;
 }

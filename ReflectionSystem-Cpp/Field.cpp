@@ -3,7 +3,8 @@
 
 USING_NAMESPACE
 
-void ReflectionSystem::Field::Dump(const void* obj, const size_t indentLevel /*= 0*/) const
+void ReflectionSystem::Field::DumpToOStream(const void* obj, std::ostream& outStream, const size_t indentLevel /*= 0*/) const
 {
-	m_FieldTypeDescriptor->Dump(obj, indentLevel);
+	outStream << GetFieldName() << " = ";
+	m_FieldTypeDescriptor->DumpToOStream(obj, outStream, indentLevel + 1);
 }

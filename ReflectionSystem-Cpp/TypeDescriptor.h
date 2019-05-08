@@ -15,7 +15,7 @@ public:
 	TypeDescriptor(ItemType*) : TypeDescriptor(typeid(std::remove_reference<ItemType>::type).name(), sizeof(std::remove_reference<ItemType>::type)) {}
 	virtual ~TypeDescriptor() {}
 
-	virtual void Dump(const void* obj, const size_t indentLevel = 0) const = 0;
+	virtual void DumpToOStream(const void* obj, std::ostream& outStream, const size_t indentLevel = 0) const = 0;
 
 	virtual const std::string& GetTypeName() const { return m_TypeName; }
 

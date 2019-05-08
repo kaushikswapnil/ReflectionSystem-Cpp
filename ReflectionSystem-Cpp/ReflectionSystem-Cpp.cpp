@@ -30,7 +30,7 @@ int main()
 
 	TypeDescriptor* nodeTypeDesc = TypeResolver<Node>::GetTypeDescriptor();
 
-	nodeTypeDesc->Dump(&node);
+	nodeTypeDesc->DumpToOStream(&node, std::cout);
 
 	return 0;
 }
