@@ -41,9 +41,6 @@
     <ClCompile Include="TypeResolver.cpp">
       <Filter>Source Files\Core\TypeResolver</Filter>
     </ClCompile>
-    <ClCompile Include="PrimitiveTypeDescriptors.cpp">
-      <Filter>Source Files\Core\TypeDescriptors\TypeDescriptorImplementations</Filter>
-    </ClCompile>
     <ClCompile Include="PrimitiveTypeResolver.cpp">
       <Filter>Source Files\Core\TypeResolver</Filter>
     </ClCompile>
@@ -69,9 +66,6 @@
     </ClInclude>
     <ClInclude Include="TypeResolver.h">
       <Filter>Source Files\Core\TypeResolver</Filter>
-    </ClInclude>
-    <ClInclude Include="PrimitiveTypeDescriptors.h">
-      <Filter>Source Files\Core\TypeDescriptors\TypeDescriptorImplementations</Filter>
     </ClInclude>
     <ClInclude Include="PrimitiveTypeResolver.h">
       <Filter>Source Files\Core\TypeResolver</Filter>
@@ -99,6 +93,9 @@
     </ClInclude>
     <ClInclude Include="IsPrimitivelyHandledType.h">
       <Filter>Source Files\Core\TypeResolver</Filter>
+    </ClInclude>
+    <ClInclude Include="PrimitiveDataTypeDescriptor.h">
+      <Filter>Source Files\Core\TypeDescriptors\TypeDescriptorImplementations</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

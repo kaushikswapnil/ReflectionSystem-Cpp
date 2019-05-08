@@ -154,7 +154,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Field.cpp" />
-    <ClCompile Include="PrimitiveTypeDescriptors.cpp" />
     <ClCompile Include="PrimitiveTypeResolver.cpp" />
     <ClCompile Include="ReflectionSystem-Cpp.cpp" />
     <ClCompile Include="STLVectorDescriptor.cpp" />
@@ -166,7 +165,7 @@
     <ClInclude Include="ExoticPrimitiveTypeResolver.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="IsPrimitivelyHandledType.h" />
-    <ClInclude Include="PrimitiveTypeDescriptors.h" />
+    <ClInclude Include="PrimitiveDataTypeDescriptor.h" />
     <ClInclude Include="PrimitiveTypeResolver.h" />
     <ClInclude Include="Reflect.h" />
     <ClInclude Include="STLContainerDescriptor.h" />

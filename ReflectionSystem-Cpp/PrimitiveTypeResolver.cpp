@@ -1,5 +1,5 @@
 #include "PrimitiveTypeResolver.h"
-#include "PrimitiveTypeDescriptors.h"
+#include "PrimitiveDataTypeDescriptor.h"
 
 USING_NAMESPACE
 
@@ -12,28 +12,28 @@ ExoticPrimitiveTypeResolver& PrimitiveTypeResolver::GetExoticPrimitiveTypeResolv
 template<>
 TypeDescriptor* PrimitiveTypeResolver::GetPrimitiveDataTypeDescriptor<int>()
 {
-	static PrimitiveTypeDescriptor<int> intTypeDescriptor;
+	static PrimitiveDataTypeDescriptor<int> intTypeDescriptor;
 	return &intTypeDescriptor;
 }
 
 template<>
 TypeDescriptor* PrimitiveTypeResolver::GetPrimitiveDataTypeDescriptor<double>()
 {
-	static PrimitiveTypeDescriptor<double> doubleTypeDescriptor;
+	static PrimitiveDataTypeDescriptor<double> doubleTypeDescriptor;
 	return &doubleTypeDescriptor;
 }
 
 template<>
 TypeDescriptor* PrimitiveTypeResolver::GetPrimitiveDataTypeDescriptor<char>()
 {
-	static PrimitiveTypeDescriptor<int> charTypeDescriptor;
+	static PrimitiveDataTypeDescriptor<int> charTypeDescriptor;
 	return &charTypeDescriptor;
 }
 
 template<>
 TypeDescriptor* PrimitiveTypeResolver::GetPrimitiveDataTypeDescriptor<std::string>()
 {
-	static PrimitiveTypeDescriptor<std::string> stdStringTypeDescriptor;
+	static PrimitiveDataTypeDescriptor<std::string> stdStringTypeDescriptor;
 	return &stdStringTypeDescriptor;
 }
 

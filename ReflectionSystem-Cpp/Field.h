@@ -14,7 +14,7 @@ public:
 		m_FieldTypeDescriptor(TypeResolver<FieldType>::GetTypeDescriptor()), 
 		m_OwnerTypeDescriptor(TypeResolver<OwnerType>::GetTypeDescriptor()) 
 		{}
-	virtual ~Field();
+	virtual ~Field() {};
 
 	const std::string& GetFieldName() const { return m_FieldName; }
 	void SetFieldName(std::string val) { m_FieldName = val; }
