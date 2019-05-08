@@ -30,6 +30,9 @@
     <Filter Include="Source Files\Core\TypeDescriptors\Base">
       <UniqueIdentifier>{9717c2cd-fdf1-4cbe-ae1e-33bf48aed01f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Core\TypeDescriptorFactory">
+      <UniqueIdentifier>{43448b3a-7d11-4002-b6db-733ef8790614}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ReflectionSystem-Cpp.cpp">

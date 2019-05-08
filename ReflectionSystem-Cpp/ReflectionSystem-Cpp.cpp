@@ -14,16 +14,11 @@ struct Node
 	REFLECT() // Enable reflection
 };
 
-REFLECT_STRUCT_BEGIN(Node)
-REFLECT_STRUCT_MEMBER(key)
-REFLECT_STRUCT_MEMBER(value)
-REFLECT_STRUCT_MEMBER(children)
-REFLECT_STRUCT_END()
-
-int functionTest(int x, int y)
-{
-	return x+y;
-}
+REFLECT_BEGIN(Node)
+REFLECT_MEMBER(key)
+REFLECT_MEMBER(value)
+REFLECT_MEMBER(children)
+REFLECT_END()
 
 int main()
 {

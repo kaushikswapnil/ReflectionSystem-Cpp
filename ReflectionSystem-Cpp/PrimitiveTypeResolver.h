@@ -8,6 +8,10 @@ BEGIN_NAMESPACE
 
 class TypeDescriptor;
 
+//uint64_t constexpr mix(char m, uint64_t s);
+//uint64_t constexpr hash(const char * m);
+
+
 class PrimitiveTypeResolver
 {
 private:
@@ -22,10 +26,13 @@ private:
 
 	static ExoticPrimitiveTypeResolver& GetExoticPrimitiveTypeResolver();
 
+	//static TypeDescriptor& constexpr GetTypeDescriptorForTypeName(const char* typeName);
+
 public:
 	template<typename T, typename std::enable_if<IsPrimitiveDataType<T>::value, int>::type = 0>
 	static TypeDescriptor* GetTypeDescriptor()
 	{
+		//return GetTypeDescriptorForTypeName(typeid(T).name());
 		return GetPrimitiveDataTypeDescriptor<T>();
 	}
 
@@ -37,3 +44,4 @@ public:
 };
 
 END_NAMESPACE
+USING_NAMESPACE 
