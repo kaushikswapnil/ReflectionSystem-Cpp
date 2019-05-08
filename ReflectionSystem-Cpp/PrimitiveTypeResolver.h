@@ -18,14 +18,21 @@ private:
 	static ExoticPrimitiveTypeResolver& GetExoticPrimitiveTypeResolver();
 
 public:
-	template<typename T, typename std::enable_if<IsPrimitivelyHandledDataType<T>::value, int>::type = 0>
+	//Unhandled types
+	template<typename T, typename std::enable_if<!(IsPrimitivelyHandledDataType<T>::value), int>::type = 0>
 	static TypeDescriptor* GetTypeDescriptor()
 	{
-		//return GetTypeDescriptorForTypeName(typeid(T).name());
+		static_assert(false, "This type does not have a relevant TypeDescriptor.");
+	}
+
+	//For primitive data types. #TODO Use flags later
+	template<typename T, typename std::enable_if<((std::is_fundamental<T>::value || IsPrimitivelyHandledDataType<T>::value) && !(IsSupportedSTLContainer<T>::value)), int>::type = 0>
+	static TypeDescriptor* GetTypeDescriptor()
+	{
 		return GetPrimitiveDataTypeDescriptor<T>();
 	}
 
-	template<typename T, typename std::enable_if<!(IsPrimitivelyHandledDataType<T>::value), int>::type = 0>
+	template<typename T, typename std::enable_if<(IsSupportedSTLContainer<T>::value), int>::type = 0>
 	static TypeDescriptor* GetTypeDescriptor()
 	{
 		return GetExoticPrimitiveTypeResolver().GetTypeDescriptor<T>();
