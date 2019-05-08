@@ -92,6 +92,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <PreprocessToFile>false</PreprocessToFile>
+      <AdditionalOptions>/Zc:offsetof- %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -164,6 +165,7 @@
   <ItemGroup>
     <ClInclude Include="ExoticPrimitiveTypeResolver.h" />
     <ClInclude Include="Field.h" />
+    <ClInclude Include="IsPrimitivelyHandledType.h" />
     <ClInclude Include="PrimitiveTypeDescriptors.h" />
     <ClInclude Include="PrimitiveTypeResolver.h" />
     <ClInclude Include="Reflect.h" />

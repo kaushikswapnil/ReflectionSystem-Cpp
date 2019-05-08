@@ -9,6 +9,7 @@ struct Node
 {
 	int key;
 	double value;
+	std::string name;
 	std::vector<int> children;
 
 	REFLECT() // Enable reflection
@@ -17,6 +18,7 @@ struct Node
 REFLECT_BEGIN(Node)
 REFLECT_MEMBER(key)
 REFLECT_MEMBER(value)
+REFLECT_MEMBER(name)
 REFLECT_MEMBER(children)
 REFLECT_END()
 
@@ -24,7 +26,7 @@ int main()
 {
 	using namespace ReflectionSystem;
 
-	Node node = { 1, 3, {5, 6, 7}};
+	Node node = { 1, 3, "Hello World",{5, 6, 7}};
 
 	TypeDescriptor* nodeTypeDesc = TypeResolver<Node>::GetTypeDescriptor();
 

@@ -97,5 +97,8 @@
     <ClInclude Include="ClassDescriptor.h">
       <Filter>Source Files\Core\TypeDescriptors\TypeDescriptorImplementations</Filter>
     </ClInclude>
+    <ClInclude Include="IsPrimitivelyHandledType.h">
+      <Filter>Source Files\Core\TypeResolver</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

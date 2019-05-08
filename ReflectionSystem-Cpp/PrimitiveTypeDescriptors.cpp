@@ -1,5 +1,4 @@
 #include "PrimitiveTypeDescriptors.h"
-#include <iostream>
 
 USING_NAMESPACE
 

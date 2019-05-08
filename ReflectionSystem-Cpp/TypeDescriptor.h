@@ -5,10 +5,12 @@
 BEGIN_NAMESPACE
 class TypeDescriptor
 {
+protected: 
+	//These constructors are used by the derived classes to allow for Init style construction
+	TypeDescriptor() : m_TypeName(), m_TypeSize(0) {} //Used for init style creations
+	TypeDescriptor(const char* typeName, const size_t size) : m_TypeName(typeName), m_TypeSize(size) {}
+	TypeDescriptor(const std::string& typeName, const size_t size) : m_TypeName(typeName), m_TypeSize(size) {}
 public:
-	TypeDescriptor() : m_TypeName(), m_Size(0) {} //Used for init style creations
-	TypeDescriptor(const char* typeName, const size_t size) : m_TypeName(typeName), m_Size(size) {}
-	TypeDescriptor(const std::string& typeName, const size_t size) : m_TypeName(typeName), m_Size(size) {}
 	template<typename ItemType>
 	TypeDescriptor(ItemType*) : TypeDescriptor(typeid(std::remove_reference<ItemType>::type).name(), sizeof(std::remove_reference<ItemType>::type)) {}
 	virtual ~TypeDescriptor() {}
@@ -16,15 +18,18 @@ public:
 	virtual void Dump(const void* obj, const size_t indentLevel = 0) const = 0;
 
 	virtual const std::string& GetTypeName() const { return m_TypeName; }
+
+	virtual const size_t GetTypeSize() const { return m_TypeSize; }
+
+	//These functions are used by derived classes to facilitate init style creations
+	//#TODO Eventually move to protected
+	void SetTypeSize(const size_t value) { m_TypeSize = value; } 
 	void SetTypeName(const char* value) { m_TypeName = value; }
 	void SetTypeName(const std::string& value) { m_TypeName = value; }
 
-	virtual const size_t GetSize() const { return m_Size; }
-	void SetSize(const size_t value) { m_Size = value; } //#TODO Eventually remove this. Size should not be resettable
-
 protected:
 	std::string m_TypeName;
-	size_t m_Size;
+	size_t m_TypeSize;
 };
 END_NAMESPACE
 

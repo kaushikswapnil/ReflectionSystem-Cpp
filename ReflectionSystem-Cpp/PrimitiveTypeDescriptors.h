@@ -1,7 +1,20 @@
 #pragma once
 #include "TypeDescriptor.h"
+#include <iostream>
 
 BEGIN_NAMESPACE
+
+template <typename PrimitiveType>
+class PrimitiveTypeDescriptor : public TypeDescriptor
+{
+public:
+	PrimitiveTypeDescriptor() : TypeDescriptor((PrimitiveType*)nullptr) {}
+
+	virtual void Dump(const void* obj, const size_t indentLevel) const override
+	{
+		std::cout << GetTypeName() << "{" << *(const PrimitiveType*)obj << "}";
+	}
+};
 
 class IntDescriptor : public TypeDescriptor
 {
