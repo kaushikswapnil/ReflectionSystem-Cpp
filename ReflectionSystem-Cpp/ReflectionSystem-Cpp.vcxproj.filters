@@ -33,15 +33,15 @@
     <Filter Include="Source Files\Core\TypeDescriptorFactory">
       <UniqueIdentifier>{43448b3a-7d11-4002-b6db-733ef8790614}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Core\TypeResolver\PrimitiveHandling">
+      <UniqueIdentifier>{6852fa99-e61c-42f8-9db0-6f1a747a45e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ReflectionSystem-Cpp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TypeResolver.cpp">
-      <Filter>Source Files\Core\TypeResolver</Filter>
-    </ClCompile>
-    <ClCompile Include="PrimitiveTypeResolver.cpp">
       <Filter>Source Files\Core\TypeResolver</Filter>
     </ClCompile>
     <ClCompile Include="TypeResolverHelper.cpp">
@@ -56,6 +56,12 @@
     <ClCompile Include="ClassDescriptor.cpp">
       <Filter>Source Files\Core\TypeDescriptors\TypeDescriptorImplementations</Filter>
     </ClCompile>
+    <ClCompile Include="STLContainerTypeResolver.cpp">
+      <Filter>Source Files\Core\TypeResolver\PrimitiveHandling</Filter>
+    </ClCompile>
+    <ClCompile Include="PrimitiveTypeResolver.cpp">
+      <Filter>Source Files\Core\TypeResolver\PrimitiveHandling</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Reflect.h">
@@ -65,9 +71,6 @@
       <Filter>Source Files\Core\TypeDescriptors</Filter>
     </ClInclude>
     <ClInclude Include="TypeResolver.h">
-      <Filter>Source Files\Core\TypeResolver</Filter>
-    </ClInclude>
-    <ClInclude Include="PrimitiveTypeResolver.h">
       <Filter>Source Files\Core\TypeResolver</Filter>
     </ClInclude>
     <ClInclude Include="SystemMacros.h">
@@ -82,20 +85,23 @@
     <ClInclude Include="TypeResolverHelper.h">
       <Filter>Source Files\Core\TypeResolver\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="ExoticPrimitiveTypeResolver.h">
-      <Filter>Source Files\Core\TypeResolver</Filter>
-    </ClInclude>
     <ClInclude Include="Field.h">
       <Filter>Source Files\Core\TypeDescriptors\Base</Filter>
     </ClInclude>
     <ClInclude Include="ClassDescriptor.h">
       <Filter>Source Files\Core\TypeDescriptors\TypeDescriptorImplementations</Filter>
     </ClInclude>
-    <ClInclude Include="IsPrimitivelyHandledType.h">
-      <Filter>Source Files\Core\TypeResolver</Filter>
-    </ClInclude>
     <ClInclude Include="PrimitiveDataTypeDescriptor.h">
       <Filter>Source Files\Core\TypeDescriptors\TypeDescriptorImplementations</Filter>
+    </ClInclude>
+    <ClInclude Include="PrimitiveTypeResolver.h">
+      <Filter>Source Files\Core\TypeResolver\PrimitiveHandling</Filter>
+    </ClInclude>
+    <ClInclude Include="STLContainerTypeResolver.h">
+      <Filter>Source Files\Core\TypeResolver\PrimitiveHandling</Filter>
+    </ClInclude>
+    <ClInclude Include="IsPrimitivelyHandledType.h">
+      <Filter>Source Files\Core\TypeResolver\PrimitiveHandling</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

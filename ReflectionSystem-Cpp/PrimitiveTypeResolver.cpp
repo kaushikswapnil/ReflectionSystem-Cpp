@@ -3,10 +3,10 @@
 
 USING_NAMESPACE
 
-ExoticPrimitiveTypeResolver& PrimitiveTypeResolver::GetExoticPrimitiveTypeResolver()
+STLContainerTypeResolver& PrimitiveTypeResolver::GetSTLContainerTypeResolver()
 {
-	static ExoticPrimitiveTypeResolver exoticPrimitiveTypeResolver;
-	return exoticPrimitiveTypeResolver;
+	static STLContainerTypeResolver stlContainerTypeResolver;
+	return stlContainerTypeResolver;
 }
 
 template<>

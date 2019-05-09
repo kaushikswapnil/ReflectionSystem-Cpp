@@ -2,7 +2,7 @@
 #include "SystemMacros.h"
 #include <type_traits>
 #include <vector>
-#include "ExoticPrimitiveTypeResolver.h"
+#include "STLContainerTypeResolver.h"
 #include "IsPrimitivelyHandledType.h"
 
 BEGIN_NAMESPACE
@@ -15,7 +15,7 @@ private:
 	template<typename T>
 	static TypeDescriptor* GetPrimitiveDataTypeDescriptor();	
 
-	static ExoticPrimitiveTypeResolver& GetExoticPrimitiveTypeResolver();
+	static STLContainerTypeResolver& GetSTLContainerTypeResolver();
 
 public:
 	//Unhandled types
@@ -35,7 +35,7 @@ public:
 	template<typename T, typename std::enable_if<(IsSupportedSTLContainer<T>::value), int>::type = 0>
 	static TypeDescriptor* GetTypeDescriptor()
 	{
-		return GetExoticPrimitiveTypeResolver().GetTypeDescriptor<T>();
+		return GetSTLContainerTypeResolver().GetTypeDescriptor<T>();
 	}
 };
 

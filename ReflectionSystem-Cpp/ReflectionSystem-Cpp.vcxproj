@@ -159,13 +159,14 @@
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="PrimitiveTypeResolver.cpp" />
     <ClCompile Include="ReflectionSystem-Cpp.cpp" />
+    <ClCompile Include="STLContainerTypeResolver.cpp" />
     <ClCompile Include="STLVectorDescriptor.cpp" />
     <ClCompile Include="ClassDescriptor.cpp" />
     <ClCompile Include="TypeResolver.cpp" />
     <ClCompile Include="TypeResolverHelper.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ExoticPrimitiveTypeResolver.h" />
+    <ClInclude Include="STLContainerTypeResolver.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="IsPrimitivelyHandledType.h" />
     <ClInclude Include="PrimitiveDataTypeDescriptor.h" />

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <typeinfo>
 #include "Reflect.h"
+#include <windows.h>
 
 struct Node
 {
@@ -26,11 +27,27 @@ int main()
 {
 	using namespace ReflectionSystem;
 
+	LARGE_INTEGER li;
+	if (!QueryPerformanceFrequency(&li))
+	{
+		return 0;
+	}
+	double PC_FREQ = double(li.QuadPart)/1000000;
+
+
+
 	Node node = { 1, 3, "Hello World",{5, 6, 7}};
+
+	QueryPerformanceCounter(&li);
+	unsigned int StartCounter = li.QuadPart;
 
 	TypeDescriptor* nodeTypeDesc = TypeResolver<Node>::GetTypeDescriptor();
 
+	QueryPerformanceCounter(&li);
+	unsigned int EndCounter = li.QuadPart;
 	nodeTypeDesc->DumpToOStream(&node, std::cout);
+
+	std::cout << std::endl << "Execution Time : " << double((EndCounter - StartCounter)/PC_FREQ);
 
 	return 0;
 }

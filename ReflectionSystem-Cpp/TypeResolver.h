@@ -9,6 +9,7 @@ BEGIN_NAMESPACE
 //#TODO USE MACROS TO ALLOW STORAGE OF THE TYPEDEF IN DEFAULT RESOLVER
 
 class TypeDescriptor;
+class ClassDescriptor;
 
 class DefaultResolver
 {
@@ -63,6 +64,11 @@ public:
 	static TypeDescriptor* GetTypeDescriptor()
 	{
 		return DefaultResolver::GetTypeDescriptor<T>();
+	}
+
+	static ClassDescriptor* GetClassDescriptor()
+	{
+		return static_cast<ClassDescriptor*>(DefaultResolver::GetTypeDescriptor<T>());
 	}
 
 	static unsigned int GetTypeID()

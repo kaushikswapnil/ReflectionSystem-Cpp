@@ -10,7 +10,6 @@ BEGIN_NAMESPACE
 class STLVectorDescriptor : public STLContainerDescriptor
 {
 	TypeDescriptor* m_ItemTypeDesc;
-	
 
 public:
 	template<typename ItemType, typename Alloc = std::allocator<ItemType>>  

@@ -12,7 +12,7 @@ public:
 		m_FieldName(fieldName), 
 		m_FieldOffset(offsetof(OwnerType, *fieldPtr)), //#TODO Obtain offset automatically
 		m_FieldTypeDescriptor(TypeResolver<FieldType>::GetTypeDescriptor()), 
-		m_OwnerTypeDescriptor(TypeResolver<OwnerType>::GetTypeDescriptor()) 
+		m_OwnerTypeDescriptor(TypeResolver<OwnerType>::GetClassDescriptor()) 
 		{}
 	virtual ~Field() {};
 
@@ -23,7 +23,7 @@ public:
 	void SetFieldOffset(size_t val) { m_FieldOffset = val; }
 
 	const TypeDescriptor* GetFieldTypeDescriptor() const { return m_FieldTypeDescriptor; }
-	const TypeDescriptor* GetOwnerTypeDescriptor() const { return m_OwnerTypeDescriptor; }
+	const ClassDescriptor* GetOwnerTypeDescriptor() const { return m_OwnerTypeDescriptor; }
 
 	void DumpToOStream(const void* obj, std::ostream& outStream, const size_t indentLevel = 0) const;
 
@@ -31,7 +31,7 @@ protected:
 	std::string m_FieldName;
 	size_t m_FieldOffset;
 	TypeDescriptor* m_FieldTypeDescriptor;
-	TypeDescriptor* m_OwnerTypeDescriptor;
+	ClassDescriptor* m_OwnerTypeDescriptor;
 };
 
 END_NAMESPACE
