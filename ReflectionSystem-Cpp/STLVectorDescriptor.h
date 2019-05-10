@@ -3,7 +3,6 @@
 #include "STLContainerDescriptor.h"
 #include <vector>
 #include <memory>
-#include "TypeResolver.h"
 
 BEGIN_NAMESPACE
 
@@ -12,11 +11,9 @@ class STLVectorDescriptor : public STLContainerDescriptor
 	TypeDescriptor* m_ItemTypeDesc;
 
 public:
-	template<typename ItemType, typename Alloc = std::allocator<ItemType>>  
-	STLVectorDescriptor(ItemType*) : STLContainerDescriptor((std::vector<ItemType, Alloc>*)nullptr), m_ItemTypeDesc(TypeResolver<ItemType>::GetTypeDescriptor())
+	template<typename VectorType>  
+	STLVectorDescriptor(TypeDescriptor* itemDescriptor, const VectorType* dummy = nullptr) : STLContainerDescriptor(dummy), m_ItemTypeDesc(itemDescriptor)
 	{	
-		using VectorType = std::vector<ItemType, Alloc>;
-
 		GetContainerSize = [](const void* voidVectorPtr) -> size_t
 		{
 			const auto& vec = *(static_cast<const VectorType*>(voidVectorPtr));

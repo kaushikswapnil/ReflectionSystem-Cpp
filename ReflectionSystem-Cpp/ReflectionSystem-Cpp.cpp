@@ -32,7 +32,7 @@ int main()
 	{
 		return 0;
 	}
-	double PC_FREQ = double(li.QuadPart)/1000000;
+	double PC_FREQ = double(li.QuadPart)/1000;
 
 
 

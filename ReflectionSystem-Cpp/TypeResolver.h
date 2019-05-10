@@ -2,13 +2,13 @@
 #include <type_traits>
 
 #include "SystemMacros.h"
-#include "PrimitiveTypeResolver.h"
+#include "PrimitiveHandlingTypeTraits.h"
+#include "STLVectorDescriptor.h"
 
 BEGIN_NAMESPACE
 
 //#TODO USE MACROS TO ALLOW STORAGE OF THE TYPEDEF IN DEFAULT RESOLVER
 
-class TypeDescriptor;
 class ClassDescriptor;
 
 class DefaultResolver
@@ -30,13 +30,50 @@ private:
 		enum { value = (sizeof(func<T>(nullptr)) == sizeof(char)) };
 	};
 
-	template<typename T>
+	//================================
+	//STL Container Resolvers
+	template<typename T, typename std::enable_if<((SupportedSTLContainerTypeFlags<T>::IsVector == false) || (SupportedSTLContainerTypeFlags<T>::HoldsPrimitiveData == false)), int>::type = 0>
+	static TypeDescriptor* GetSTLContainerDescriptor() { static_assert(false, "Cannot obtain type descriptor for this object"); return nullptr; }
+
+	template<typename T, typename std::enable_if<((SupportedSTLContainerTypeFlags<T>::IsVector == true) && (SupportedSTLContainerTypeFlags<T>::HoldsPrimitiveData == true)), int>::type = 0>
+	static TypeDescriptor* GetSTLContainerDescriptor() { return GetSTDVectorTypeDescriptor((T*)nullptr); }
+
+	//STD Vector
+	template<typename ItemType, typename Alloc>
+	static TypeDescriptor* GetSTDVectorTypeDescriptor(const std::vector<ItemType, Alloc>* dummy = nullptr)
+	{
+		static STLVectorDescriptor vectorDescriptor(GetTypeDescriptor<ItemType>(), dummy);
+		return &vectorDescriptor;
+	}
+	//END of STD Vector
+	//STL Container Resolvers
+	//===============================
+
+	//Primitive Descriptors
+	//Unhandled types
+	template<typename T, typename std::enable_if<!(IsPrimitivelyHandledDataType<T>::value), int>::type = 0>
 	static TypeDescriptor* GetPrimitiveTypeDescriptor()
 	{
-		return GetPrimitiveTypeResolver().GetTypeDescriptor<T>();
+		static_assert(false, "This type does not have a relevant TypeDescriptor.");
 	}
 
-	static PrimitiveTypeResolver& GetPrimitiveTypeResolver();
+	//For primitive data types. #TODO Use flags later
+	template<typename T, typename std::enable_if<((std::is_fundamental<T>::value || IsPrimitivelyHandledDataType<T>::value) && !(IsSupportedSTLContainer<T>::value)), int>::type = 0>
+	static TypeDescriptor* GetPrimitiveTypeDescriptor()
+	{
+		return GetPrimitiveDataTypeDescriptor<T>();
+	}
+
+	template<typename T, typename std::enable_if<(IsSupportedSTLContainer<T>::value), int>::type = 0>
+	static TypeDescriptor* GetPrimitiveTypeDescriptor()
+	{
+		return GetSTLContainerDescriptor<T>();
+	}
+
+	template<typename T>
+	static TypeDescriptor* GetPrimitiveDataTypeDescriptor();
+
+	//End of PrimitiveDescriptors
 
 public:
 	//A similar SFINAE is utilized here. enable_if has a member variable called type if 

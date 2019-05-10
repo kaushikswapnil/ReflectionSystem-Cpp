@@ -21,20 +21,14 @@
     <Filter Include="Source Files\Core\TypeDescriptors\TypeDescriptorImplementations">
       <UniqueIdentifier>{49c17975-77fd-4a3d-b4db-5de911b11930}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Core\TypeResolver\Utils">
-      <UniqueIdentifier>{0a2f54a7-c86a-4bd5-a0f0-7a7be57a8be6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Core\TypeDescriptors\TypeDescriptorImplementations\STLContainerDescriptors">
-      <UniqueIdentifier>{aa07cd37-aca6-4f73-92f4-0f6b21f7800d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Core\TypeDescriptors\Base">
-      <UniqueIdentifier>{9717c2cd-fdf1-4cbe-ae1e-33bf48aed01f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Core\TypeDescriptorFactory">
       <UniqueIdentifier>{43448b3a-7d11-4002-b6db-733ef8790614}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Core\TypeResolver\PrimitiveHandling">
-      <UniqueIdentifier>{6852fa99-e61c-42f8-9db0-6f1a747a45e0}</UniqueIdentifier>
+    <Filter Include="Source Files\Core\TypeDescriptors\ClassDescriptor">
+      <UniqueIdentifier>{934a6ac4-43da-4ddd-9ed7-a7be39518790}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\TypeDescriptors\STLContainerDescriptors">
+      <UniqueIdentifier>{aa07cd37-aca6-4f73-92f4-0f6b21f7800d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -44,23 +38,14 @@
     <ClCompile Include="TypeResolver.cpp">
       <Filter>Source Files\Core\TypeResolver</Filter>
     </ClCompile>
-    <ClCompile Include="TypeResolverHelper.cpp">
-      <Filter>Source Files\Core\TypeResolver\Utils</Filter>
-    </ClCompile>
     <ClCompile Include="STLVectorDescriptor.cpp">
-      <Filter>Source Files\Core\TypeDescriptors\TypeDescriptorImplementations\STLContainerDescriptors</Filter>
-    </ClCompile>
-    <ClCompile Include="Field.cpp">
-      <Filter>Source Files\Core\TypeDescriptors\Base</Filter>
+      <Filter>Source Files\Core\TypeDescriptors\STLContainerDescriptors</Filter>
     </ClCompile>
     <ClCompile Include="ClassDescriptor.cpp">
-      <Filter>Source Files\Core\TypeDescriptors\TypeDescriptorImplementations</Filter>
+      <Filter>Source Files\Core\TypeDescriptors\ClassDescriptor</Filter>
     </ClCompile>
-    <ClCompile Include="STLContainerTypeResolver.cpp">
-      <Filter>Source Files\Core\TypeResolver\PrimitiveHandling</Filter>
-    </ClCompile>
-    <ClCompile Include="PrimitiveTypeResolver.cpp">
-      <Filter>Source Files\Core\TypeResolver\PrimitiveHandling</Filter>
+    <ClCompile Include="Field.cpp">
+      <Filter>Source Files\Core\TypeDescriptors\ClassDescriptor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -77,31 +62,22 @@
       <Filter>Source Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="STLContainerDescriptor.h">
-      <Filter>Source Files\Core\TypeDescriptors\TypeDescriptorImplementations\STLContainerDescriptors</Filter>
+      <Filter>Source Files\Core\TypeDescriptors\STLContainerDescriptors</Filter>
     </ClInclude>
     <ClInclude Include="STLVectorDescriptor.h">
-      <Filter>Source Files\Core\TypeDescriptors\TypeDescriptorImplementations\STLContainerDescriptors</Filter>
-    </ClInclude>
-    <ClInclude Include="TypeResolverHelper.h">
-      <Filter>Source Files\Core\TypeResolver\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Field.h">
-      <Filter>Source Files\Core\TypeDescriptors\Base</Filter>
+      <Filter>Source Files\Core\TypeDescriptors\STLContainerDescriptors</Filter>
     </ClInclude>
     <ClInclude Include="ClassDescriptor.h">
-      <Filter>Source Files\Core\TypeDescriptors\TypeDescriptorImplementations</Filter>
+      <Filter>Source Files\Core\TypeDescriptors\ClassDescriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="Field.h">
+      <Filter>Source Files\Core\TypeDescriptors\ClassDescriptor</Filter>
     </ClInclude>
     <ClInclude Include="PrimitiveDataTypeDescriptor.h">
-      <Filter>Source Files\Core\TypeDescriptors\TypeDescriptorImplementations</Filter>
+      <Filter>Source Files\Core\TypeDescriptors</Filter>
     </ClInclude>
-    <ClInclude Include="PrimitiveTypeResolver.h">
-      <Filter>Source Files\Core\TypeResolver\PrimitiveHandling</Filter>
-    </ClInclude>
-    <ClInclude Include="STLContainerTypeResolver.h">
-      <Filter>Source Files\Core\TypeResolver\PrimitiveHandling</Filter>
-    </ClInclude>
-    <ClInclude Include="IsPrimitivelyHandledType.h">
-      <Filter>Source Files\Core\TypeResolver\PrimitiveHandling</Filter>
+    <ClInclude Include="PrimitiveHandlingTypeTraits.h">
+      <Filter>Source Files\Core\TypeResolver</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
