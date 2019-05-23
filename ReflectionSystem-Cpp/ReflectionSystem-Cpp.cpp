@@ -16,11 +16,22 @@ struct Node
 	REFLECT() // Enable reflection
 };
 
+struct NodeDerived : public Node
+{
+	int derivedValue;
+
+	REFLECT() // Enable reflection
+};
+
 REFLECT_BEGIN(Node)
 REFLECT_MEMBER(key)
 REFLECT_MEMBER(value)
 REFLECT_MEMBER(name)
 REFLECT_MEMBER(children)
+REFLECT_END()
+
+REFLECT_BEGIN(NodeDerived)
+REFLECT_MEMBER(derivedValue)
 REFLECT_END()
 
 int main()
@@ -35,13 +46,18 @@ int main()
 	double PC_FREQ = double(li.QuadPart)/1000;
 
 
-
-	Node node = { 1, 3, "Hello World",{5, 6, 7}};
+	NodeDerived derived;
+	derived.key = 1;
+	derived.value = 3;
+	derived.name = "Hello World";
+	derived.children = {5, 6, 7};
+	derived.derivedValue = 4;
+	Node* node = &derived;
 
 	QueryPerformanceCounter(&li);
 	unsigned int StartCounter = li.QuadPart;
 
-	TypeDescriptor* nodeTypeDesc = TypeResolver<Node>::GetTypeDescriptor();
+	TypeDescriptor* nodeTypeDesc = node->GetClassDescriptor();
 
 	QueryPerformanceCounter(&li);
 	unsigned int EndCounter = li.QuadPart;

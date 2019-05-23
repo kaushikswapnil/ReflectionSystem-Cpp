@@ -7,7 +7,7 @@ void ClassDescriptor::DumpToOStream(const void* obj, std::ostream& outStream, co
 {
 	//#TODO Change field descriptor so that we can simply call dump on the fields
 	outStream << GetTypeName() << " ";
-	if (!m_Members.empty())
+	if (!GetMembers().empty())
 	{
 		outStream << std::endl << std::string(4 * (indentLevel), ' ') << "{" << std::endl;
 		for (const Field& member : m_Members)
