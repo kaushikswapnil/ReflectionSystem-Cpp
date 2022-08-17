@@ -7,14 +7,25 @@ void ClassDescriptor::DumpToOStream( BytePointer const obj, std::ostream& outStr
 {
 	//#TODO Change field descriptor so that we can simply call dump on the fields
 	outStream << GetTypeName() << " ";
-	if (!GetMembers().empty())
+	const bool has_parent_members = (HasBaseClassDescriptor() && !GetBaseClassDescriptor()->GetMembers().empty());
+	if (!GetMembers().empty() || has_parent_members)
 	{
 		outStream << std::endl << std::string(4 * (indentLevel), ' ') << "{" << std::endl;
-		for (const Field& member : m_Members)
+
+		if (has_parent_members)
+		{
+			for (const Field* field : GetBaseClassDescriptor()->GetMembers())
+			{
+				outStream << std::string(4 * (indentLevel + 1), ' ');
+				outStream << "{i} ";
+				field->DumpToOStream(obj, outStream, indentLevel + 1);
+			}
+		}
+
+		for (const Field* field : m_Members)
 		{
 			outStream << std::string(4 * (indentLevel + 1), ' ');
-			BytePointer const member_ptr = obj + member.GetFieldOffset();
-			member.DumpToOStream(member_ptr, outStream, indentLevel + 1);
+			field->DumpToOStream(obj, outStream, indentLevel + 1);
 		}
 
 		outStream << std::string(4 * indentLevel, ' ') << "}" << std::endl;

@@ -32,13 +32,34 @@ public:
 	const TypeDescriptor* GetFieldTypeDescriptor() const { return m_FieldTypeDescriptor; }
 	const ClassDescriptor* GetOwnerTypeDescriptor() const { return m_OwnerTypeDescriptor; }
 
-	void DumpToOStream(const BytePointer obj, std::ostream& outStream, const size_t indentLevel = 0) const;
+	virtual void DumpToOStream(BytePointer const obj, std::ostream& outStream, const size_t indentLevel = 0) const = 0;
 
 protected:
 	std::string m_FieldName;
 	std::intptr_t m_FieldOffset;
 	TypeDescriptor* m_FieldTypeDescriptor;
 	ClassDescriptor* m_OwnerTypeDescriptor;
+};
+
+template<typename FieldType, typename OwnerType>
+class FieldImpl : public Field
+{
+public:
+	FieldImpl(const char* fieldName, FieldType OwnerType::*fieldPtr, OwnerType* default_instance) : Field(fieldName, fieldPtr, default_instance)
+	{
+
+	}
+
+	void DumpToOStream(BytePointer const obj, std::ostream& outStream, const size_t indentLevel = 0) const override
+	{
+		outStream << GetFieldName() << " = ";
+		m_OwnerTypePtr = reinterpret_cast<OwnerType*>(obj);
+		FieldType* const field_obj = reinterpret_cast<FieldType* const >(obj + m_FieldOffset);
+		m_FieldTypeDescriptor->DumpToOStream(reinterpret_cast<BytePointer const>(field_obj), outStream, indentLevel + 1);
+	}
+
+	FieldType OwnerType::* m_MemberTypePtr;
+	mutable OwnerType* m_OwnerTypePtr;
 };
 
 END_NAMESPACE

@@ -20,7 +20,7 @@ struct NodeDerived : public Node
 {
 	int derivedValue{};
 
-	REFLECT() // Enable reflection
+	REFLECT_INHERITED(Node) // Enable reflection
 };
 
 REFLECT_BEGIN(Node)
@@ -46,13 +46,13 @@ int main()
 	double PC_FREQ = double(li.QuadPart)/1000;
 
 
-	//NodeDerived derived;
-	Node derived;
+	NodeDerived derived;
+	//Node derived;
 	derived.key = 1;
 	derived.value = 3;
 	derived.name = "Hello World";
 	derived.children = {5, 6, 7};
-	//derived.derivedValue = 4;
+	derived.derivedValue = 4;
 	Node* node = &derived;
 
 	QueryPerformanceCounter(&li);
@@ -62,7 +62,7 @@ int main()
 
 	QueryPerformanceCounter(&li);
 	unsigned int EndCounter = li.QuadPart;
-	nodeTypeDesc->DumpToOStream(reinterpret_cast<BytePointer>(&node), std::cout);
+	nodeTypeDesc->DumpToOStream(reinterpret_cast<BytePointer>(node), std::cout);
 
 	std::cout << std::endl << "Execution Time : " << double((EndCounter - StartCounter)/PC_FREQ);
 
