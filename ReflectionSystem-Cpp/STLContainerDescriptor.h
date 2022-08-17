@@ -13,19 +13,19 @@ public:
 	STLContainerDescriptor(ContainerType* dummy) : TypeDescriptor(dummy), GetContainerSize(nullptr), GetContainerItem(nullptr) {}
 
 	template<typename CastType = void>
-	const CastType& GetItem(const void* object, const size_t index)
+	const CastType& GetItem(const BytePointer object, const size_t index)
 	{
 		return static_cast<const CastType*>(GetContainerItem(object, index));
 	}
 
-	const size_t GetSize(const void* object)
+	const size_t GetSize(const BytePointer object)
 	{
 		return GetContainerSize(object);
 	}
 
 protected:
-	size_t(*GetContainerSize)(const void*);
-	const void* (*GetContainerItem)(const void*, size_t);
+	size_t(*GetContainerSize)(const BytePointer);
+	BytePointer const (*GetContainerItem)(BytePointer const, size_t);
 };
 
 END_NAMESPACE

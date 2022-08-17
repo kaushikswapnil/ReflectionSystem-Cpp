@@ -8,17 +8,17 @@
 
 struct Node
 {
-	int key;
-	double value;
-	std::string name;
-	std::vector<int> children;
+	int key{};
+	double value{};
+	std::string name{};
+	std::vector<int> children{};
 
 	REFLECT() // Enable reflection
 };
 
 struct NodeDerived : public Node
 {
-	int derivedValue;
+	int derivedValue{};
 
 	REFLECT() // Enable reflection
 };
@@ -62,7 +62,7 @@ int main()
 
 	QueryPerformanceCounter(&li);
 	unsigned int EndCounter = li.QuadPart;
-	nodeTypeDesc->DumpToOStream(&node, std::cout);
+	nodeTypeDesc->DumpToOStream(reinterpret_cast<BytePointer>(&node), std::cout);
 
 	std::cout << std::endl << "Execution Time : " << double((EndCounter - StartCounter)/PC_FREQ);
 

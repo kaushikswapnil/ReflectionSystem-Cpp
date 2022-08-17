@@ -3,7 +3,7 @@
 
 USING_NAMESPACE
 
-void STLVectorDescriptor::DumpToOStream(const void* obj, std::ostream& outStream, const size_t indentLevel) const
+void STLVectorDescriptor::DumpToOStream(BytePointer const obj, std::ostream& outStream, const size_t indentLevel) const
 {
 	const size_t numItems = GetContainerSize(obj);
 	outStream << GetTypeName();

@@ -14,6 +14,12 @@ public:
 		m_FieldTypeDescriptor(TypeResolver<FieldType>::GetTypeDescriptor()), 
 		m_OwnerTypeDescriptor(TypeResolver<OwnerType>::GetClassDescriptor()) 
 		{
+			FieldType* field_type_instance_ptr = &(default_instance->*fieldPtr);
+			std::intptr_t field_offset = reinterpret_cast<BytePointer>(field_type_instance_ptr) - reinterpret_cast<BytePointer>(default_instance);
+			if (field_offset != m_FieldOffset)
+			{
+				m_FieldOffset = field_offset;
+			}
 		}
 	virtual ~Field() {};
 
@@ -26,7 +32,7 @@ public:
 	const TypeDescriptor* GetFieldTypeDescriptor() const { return m_FieldTypeDescriptor; }
 	const ClassDescriptor* GetOwnerTypeDescriptor() const { return m_OwnerTypeDescriptor; }
 
-	void DumpToOStream(const void* obj, std::ostream& outStream, const size_t indentLevel = 0) const;
+	void DumpToOStream(const BytePointer obj, std::ostream& outStream, const size_t indentLevel = 0) const;
 
 protected:
 	std::string m_FieldName;

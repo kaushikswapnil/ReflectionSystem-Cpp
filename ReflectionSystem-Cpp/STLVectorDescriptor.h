@@ -14,20 +14,20 @@ public:
 	template<typename VectorType>  
 	STLVectorDescriptor(TypeDescriptor* itemDescriptor, const VectorType* dummy = nullptr) : STLContainerDescriptor(dummy), m_ItemTypeDesc(itemDescriptor)
 	{	
-		GetContainerSize = [](const void* voidVectorPtr) -> size_t
+		GetContainerSize = [](BytePointer const voidVectorPtr) -> size_t
 		{
-			const auto& vec = *(static_cast<const VectorType*>(voidVectorPtr));
+			const auto& vec = *(reinterpret_cast<const VectorType*>(voidVectorPtr));
 			return vec.size();
 		};
 
-		GetContainerItem = [](const void* voidVecPtr, size_t index) -> const void*
+		GetContainerItem = [](BytePointer const voidVecPtr, size_t index) -> BytePointer const
 		{
-			const auto& vec = *(static_cast<const VectorType*>(voidVecPtr));
-			return &vec[index];
+			auto& vec = *(reinterpret_cast<VectorType* const >(voidVecPtr));
+			return reinterpret_cast<BytePointer const>(&vec[index]);
 		};
 	}
 
-	virtual void DumpToOStream(const void* obj, std::ostream& outStream, const size_t indentLevel = 0) const override;
+	virtual void DumpToOStream( BytePointer const obj, std::ostream& outStream, const size_t indentLevel = 0) const override;
 };
 
 END_NAMESPACE

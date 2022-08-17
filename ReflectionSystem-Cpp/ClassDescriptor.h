@@ -14,7 +14,7 @@ public:
 		init(this);
 	}
 
-	virtual void DumpToOStream(const void* obj, std::ostream& outStream, const size_t indentLevel = 0) const override;
+	virtual void DumpToOStream( BytePointer const obj, std::ostream& outStream, const size_t indentLevel = 0) const override;
 	
 	const std::vector<ReflectionSystem::Field>& GetMembers() const { return m_Members; }
 	void SetMembers(const std::vector<ReflectionSystem::Field>& val) { m_Members = val; }
