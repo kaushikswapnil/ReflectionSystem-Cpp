@@ -15,13 +15,15 @@
 	void _Type::InitReflection(SCOPE_NAMESPACE::ClassDescriptor* typeDesc) \
 	{ \
 		using type = _Type; \
+		type default_instance; \
+		type* default_instance_ptr = &default_instance; \
 		typeDesc->SetTypeName(typeid(type).name()); \
 		typeDesc->SetTypeSize(sizeof(type)); \
 		\
 		std::vector<SCOPE_NAMESPACE::Field> members;
 
 #define REFLECT_MEMBER(_Name) \
-		members.push_back(SCOPE_NAMESPACE::Field(#_Name, &type::_Name)); 
+		members.push_back(SCOPE_NAMESPACE::Field(#_Name, &type::_Name, default_instance_ptr)); 
 
 #define REFLECT_END() \
 		typeDesc ->SetMembers(members); \

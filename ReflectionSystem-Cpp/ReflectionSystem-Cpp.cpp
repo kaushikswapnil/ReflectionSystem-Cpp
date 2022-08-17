@@ -46,12 +46,13 @@ int main()
 	double PC_FREQ = double(li.QuadPart)/1000;
 
 
-	NodeDerived derived;
+	//NodeDerived derived;
+	Node derived;
 	derived.key = 1;
 	derived.value = 3;
 	derived.name = "Hello World";
 	derived.children = {5, 6, 7};
-	derived.derivedValue = 4;
+	//derived.derivedValue = 4;
 	Node* node = &derived;
 
 	QueryPerformanceCounter(&li);
